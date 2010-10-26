@@ -40,3 +40,7 @@ li{
 .active1{
 	color: green;	
 }
+a{
+	color: white;
+	font-weight: bold;
+}

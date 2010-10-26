@@ -4,8 +4,7 @@ var Pager = new Class({
 	totalPages: 1,
 	elements: null,
 	totalElements: 0,
-	currentPage: null,
-	divObj: null,
+	currentPage: null,	
 	pages: null,
 	numberPrefix: null,
 	parentElem: null,
@@ -31,14 +30,14 @@ var Pager = new Class({
 		this.pages = Array();
 		for(l = 0; l < this.totalElements; l++){
 			if(l % this.options.elemPerPage == 0){
-				this.divObj = new Element('div', {styles: {position: 'absolute', opacity: 0, visibility: 'visible'}});
+				divObj = new Element('div', {styles: {height: this.elements[l].offsetHeight, position: 'absolute', opacity: 0, visibility: 'visible'}});
 				if(!this.options.noEffect)
-					this.divObj.set('morph', {duration: this.options.effectDuration});
-				this.pages.push(this.divObj);
-				this.divObj.inject(this.parentElem);
-				this.elements[l].inject(this.divObj);
+					divObj.set('morph', {duration: this.options.effectDuration});
+				this.pages.push(divObj);
+				divObj.inject(this.parentElem);
+				this.elements[l].inject(divObj);
 			}else{
-				this.elements[l].inject(this.divObj);
+				this.elements[l].inject(divObj);
 			}
 		}
 		
